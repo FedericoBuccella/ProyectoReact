@@ -1,13 +1,14 @@
+import React from 'react';
 import './App.css';
 import NavBar from './components/Navbar/NavBar';
-import logo from './LogoTC.png'
+import ItemListContainer from './components/ItemListContainer/itemListContainer';
 
 function App() {
   return (
     <div className='App' >
       <header>
-        <img src={logo} className="logoPrinci"></img>
         <NavBar />
+        <ItemListContainer greeting='Bienvenidos a TecnoCenter' />
       </header>
     </div>
   );
