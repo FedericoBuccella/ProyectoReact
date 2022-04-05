@@ -1,0 +1,10 @@
+.Contador{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.Principal{
+    margin-top: 10%;
+}
