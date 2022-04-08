@@ -1,4 +1,5 @@
 import { Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const Item = ({name, img}) => {
     return (
@@ -9,8 +10,8 @@ const Item = ({name, img}) => {
                     <Card.Title>{name}</Card.Title>
                 </Card.Body>
                 <div>
-                    <button className="btn btn-primary">Ver detalle</button>
-                </div>
+                    <Button>Ver Detalle</Button>
+                </div>            
             </Card>
         </section>
     );
