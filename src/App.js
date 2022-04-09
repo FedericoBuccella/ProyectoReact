@@ -4,7 +4,9 @@ import NavBar from './components/Navbar/NavBar';
 import ItemCount from './components/ItemCount/ItemCount';
 
 function App() {
+
   return (
+
     <div className='App' >
       <header>
         <NavBar />
