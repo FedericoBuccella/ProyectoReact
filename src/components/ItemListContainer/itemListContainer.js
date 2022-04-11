@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { getProducts } from "../../AsyncMock"
 import ItemList from "../ItemList/ItemList"
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
 
     const [products,setProducts] = useState([])
 
@@ -18,9 +18,6 @@ const ItemListContainer = (props) => {
 
     return(
         <div> 
-            <h1>
-                {props.greeting}
-            </h1>
             <ItemList products={products} />
         </div>
     )

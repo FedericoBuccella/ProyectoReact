@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
 
         setloading(true)
 
-        getProductsById().then((res) => {
+        getProductsById(1).then((res) => {
 
             setItem(res)
 
@@ -26,11 +26,12 @@ const ItemDetailContainer = () => {
     return (
         <div>
             {
-            loading 
+            loading  
             ?
                 <h1>
                     Cargando...
-                </h1>:
+                </h1>
+            :
                 <ItemDetail {...Item} /> 
             }
         </div>

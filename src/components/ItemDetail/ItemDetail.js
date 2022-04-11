@@ -1,20 +1,24 @@
+import { useState } from "react";
 
 
-const ItemDetail = ({Item}) => {
+const ItemDetail = ({name, category, price, img}) => {
+    
+
     return (
 
         <div className="container my-5 w-25">
-            <div className='card'>
-                <img src={Item.img} alt={titulo}/>
+             <div className='card'>
+                <img src={img} alt={name}/>
                     <div className='card-body'>
-                        <h2 className='card-title text-start'>{Item.name}</h2>
-                        <p className='card-text text-start'>{Item.category}</p>
+                        <h2 className='card-title text-start'>{name}</h2>
+                        <p className='card-text text-start'>{category}</p>
                     </div>
                     <div className='list-group'>
-                        <p>Precio: ${Item.price}</p>
+                        <p>Precio: ${price}</p>
                     </div>
             </div>
         </div>
+        
     );
 };
 
