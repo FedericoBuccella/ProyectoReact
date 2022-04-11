@@ -1,5 +1,5 @@
 
-const Products = [
+export const Products = [
     {
         id: 1,
         name: "Disco Sólido SSD Gigabyte 240GB 500MB/s",
@@ -34,7 +34,7 @@ const Products = [
     }
 ]
 
-export const getProducts = () => {
+/* export const getProducts = () => {
     return new Promise (resolve => {
         setTimeout(() => {
             resolve(Products)
@@ -48,4 +48,4 @@ export const getProductsById = (id) => {
             resolve(Products.find(prod => prod.id === id))
         },2000)
     })
-}
+} */
