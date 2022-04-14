@@ -1,16 +1,16 @@
 import { Card } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const Item = ({name, img}) => {
+const Item = ({id, name, img}) => {
     return (
         <section>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem', padding:'10px' }}>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                 </Card.Body>
                 <div>
-                    <Button>Ver Detalle</Button>
+                    <Link className="btn btn-primary" to={`/detail/${id}`}>Ver Detalle</Link>
                 </div>            
             </Card>
         </section>

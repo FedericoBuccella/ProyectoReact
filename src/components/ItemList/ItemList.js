@@ -3,7 +3,7 @@ import Item from '../Item/Item'
 
 const ItemList = ({products}) => {
     return (
-        <div className='d-flex flex-flow justify-content-around align-items-center'>
+        <div className='Todos'>
             {products.map ( prod => <Item key={prod.id} {...prod} />)}
         </div>
     );

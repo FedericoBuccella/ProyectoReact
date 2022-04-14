@@ -1,8 +1,5 @@
-import { useState } from "react";
-
 
 const ItemDetail = ({name, category, price, img}) => {
-    
 
     return (
 
