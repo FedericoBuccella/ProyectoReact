@@ -1,6 +1,7 @@
+import ItemCount from "../ItemCount/ItemCount";
 
-const ItemDetail = ({name, category, price, img}) => {
-
+const ItemDetail = ({name, category, price, img, stock}) => {
+    
     return (
 
         <div className="container my-5 w-25">
@@ -13,6 +14,7 @@ const ItemDetail = ({name, category, price, img}) => {
                     <div className='list-group'>
                         <p>Precio: ${price}</p>
                     </div>
+                    <ItemCount stock={stock} initial={1} />
             </div>
         </div>
         

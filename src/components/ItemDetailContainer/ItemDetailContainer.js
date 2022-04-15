@@ -3,7 +3,6 @@ import { getProductsById } from "../../AsyncMock";
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from "react-router-dom";
 
-
 const ItemDetailContainer = () => {
 
     const [Item,setItem] = useState()

@@ -16,7 +16,7 @@ const ItemCount = ({initial, stock}) => {
             }
             
         })
-    },[])
+    },[initial])
 
     useEffect(()=>{
         console.log('El contenido del contador cambio')
@@ -49,7 +49,7 @@ const ItemCount = ({initial, stock}) => {
         <section className="container-fluid Principal">
             <div className="Contador">
                 <button type="button" className="btn btn-outline-primary" onClick={decrement}>-</button>
-                <p className="p-2">{count} </p>
+                <p className="p-2"> {count} </p>
                 <button type="button" className="btn btn-outline-primary" onClick={increment}>+</button>
             </div>
             <div>
