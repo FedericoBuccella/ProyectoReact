@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import './ItemCount.css';
 
-const ItemCount = ({initial, stock}) => {
+const ItemCount = ({onConfirm, initial, stock}) => {
 
     const [count, setCount] = useState(initial)
 
@@ -38,12 +38,12 @@ const ItemCount = ({initial, stock}) => {
         }
     }
 
-    const agregar = () => {
+  /*   const agregar = () => {
         console.log('Se agregaron ' ,count, 'Productos a su carrito de compra' )
         setTimeout(()=>{
             setCount(initial)
         },2000)
-    }
+    } */
 
     return(
         <section className="container-fluid Principal">
@@ -53,7 +53,7 @@ const ItemCount = ({initial, stock}) => {
                 <button type="button" className="btn btn-outline-primary" onClick={increment}>+</button>
             </div>
             <div>
-                <button type="button" className="btn btn-outline-primary" onClick={agregar}>Agregar al carrito</button>
+                <button type="button" className="btn btn-outline-primary" onClick={() => onConfirm(count)}>Agregar al carrito</button>
             </div>
         </section>
     )
