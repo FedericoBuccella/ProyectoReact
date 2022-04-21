@@ -38,13 +38,6 @@ const ItemCount = ({onConfirm, initial, stock}) => {
         }
     }
 
-  /*   const agregar = () => {
-        console.log('Se agregaron ' ,count, 'Productos a su carrito de compra' )
-        setTimeout(()=>{
-            setCount(initial)
-        },2000)
-    } */
-
     return(
         <section className="container-fluid Principal">
             <div className="Contador">
