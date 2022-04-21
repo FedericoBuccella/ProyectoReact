@@ -7,26 +7,42 @@ export const CarritoContextProvider = ({children}) => {
     
     const [cart, setcart] = useState([])
 
+    console.log(cart)
+
     const AgregarProducto = (addProduct) => {
 
         setcart([...cart, addProduct])
-
     }
 
     const ContadorObjetos = () => {
         let count = 0
 
-        cart.forEach(p => {
-            count += p.ContadorObjetos
+        cart.forEach(prod => {
+            count += prod.Cantidad
         })
 
         return count
     }
 
+    const isInCart = (id) => {
+        return cart.some(prod => prod.id === id)
+    }
+
+    const clearCart = () => {
+        setcart([])
+    }
+
+    const removeItem = (id) => {
+        const productos = cart.filter(prod => prod.id !== id)
+        setcart(productos)
+    }
+
     return(
-        <CarritoContextProvider value={{cart, AgregarProducto, ContadorObjetos}}>
-            {children}
-        </CarritoContextProvider>    
+        <div>
+            <CarritoContext.Provider value={{cart, AgregarProducto, ContadorObjetos, isInCart, clearCart, removeItem}}>
+                {children}
+            </CarritoContext.Provider>
+        </div>
     )
 }
 

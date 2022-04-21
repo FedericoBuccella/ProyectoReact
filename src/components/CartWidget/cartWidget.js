@@ -4,12 +4,13 @@ import CarritoContext from '../../CartContext/CartContext';
 
 const CartWidget = () => {
 
-    const { ContadorObjetos } = useContext(CarritoContext)
+    const { ContadorObjetos, clearCart } = useContext(CarritoContext)
     
     return(
         <div className="CartWidget">
             <img src="./images/cart.png" alt='carrito' style={{width: 40, marginRight: 10}} />
-            {ContadorObjetos}
+            {ContadorObjetos()}
+            <button className='btn btn-primary' onClick={clearCart}>Borrar carrito</button>
         </div>
     )
 }

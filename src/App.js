@@ -15,7 +15,7 @@ function App() {
           <BrowserRouter>
             <NavBar />
             <Routes>
-              <Route path='/' element={<h1>Bienvenidos a TecnoCenter!</h1>}></Route>
+              <Route path='/' element={<h1>Bienvenidos a TecnoCenter!</h1>}/>
               <Route path='/category/:categoryId' element={<ItemListContainer />} />
               <Route path='/detail/:productId' element={<ItemDetailContainer />} /> 
             </Routes>

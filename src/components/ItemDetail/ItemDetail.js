@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import CarritoContext from "../../CartContext/CartContext";
 
-const ItemDetail = ({id, name, category, price, img, stock}) => {
-    const [Cantidad, setCantidad] = useState(0) 
+const ItemDetail = ({id, name, category, price, img, stock}) => { 
 
-    const {AgregarProducto} = useContext(CarritoContext)
+    const {AgregarProducto, isInCart} = useContext(CarritoContext)
 
     const AgregarCarro = (count) => {
-        setCantidad(count)
 
         const CarritoObj = {
             id,
@@ -34,7 +32,7 @@ const ItemDetail = ({id, name, category, price, img, stock}) => {
                     <div className='list-group'>
                         <p>Precio: ${price}</p>
                     </div>
-                    {Cantidad > 0 ? 
+                    {isInCart(id) > 0 ? 
                         <div> <Link className="btn btn-outline-primary" to='/cart'>
                                 Ir al carrito 
                             </Link>
