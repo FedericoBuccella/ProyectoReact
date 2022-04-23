@@ -19,6 +19,7 @@ export const CarritoContextProvider = ({children}) => {
 
         cart.forEach(prod => {
             count += prod.Cantidad
+            console.log(count)
         })
 
         return count

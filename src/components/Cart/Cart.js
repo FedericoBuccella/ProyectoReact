@@ -1,11 +1,25 @@
 import './Cart.css'
 import { useContext } from "react";
 import CarritoContext from "../../CartContext/CartContext";
+import { Link } from 'react-router-dom';
 
 
 const Cart = () => {
 
     const { cart, removeItem, CalculoTotal} = useContext(CarritoContext)
+
+    if(cart.length === 0){
+        return(
+            <div>
+                <h1 className='m-5'>
+                    Todavia no has agregado productos al carrito
+                </h1>
+                <Link className='btn btn-primary m-5' to={`/category/Productos`}>
+                    Home
+                </Link>
+            </div>
+        )
+    }
 
     return (
         <div>
@@ -37,14 +51,14 @@ const Cart = () => {
                             )}
                 </tbody>
             </table>
-            <h6 className='btn btn-danger'>
-                Total: ${CalculoTotal()}
-            </h6>
-            <h6 onClick={() => {
-                console.log("Usted debe abonar $" + CalculoTotal())
-            }} className='btn btn-success'>
-                        Finalizar compra
-            </h6>
+            <div className='d-flex flex-flow justify-content-evenly align-items-center'>
+                <h6 className='total btn-danger'>
+                        Total a abonar: ${CalculoTotal()}
+                </h6>   
+                <h6 /* onClick={} */ className='btn btn-success'>
+                            Finalizar compra
+                </h6>
+            </div>    
         </div>
     );
 };

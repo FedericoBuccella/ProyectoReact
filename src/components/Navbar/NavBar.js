@@ -1,10 +1,14 @@
 import "./NavBar.css"
-import CartWidget from "../CartWidget/cartWidget"
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getCategories } from "../../AsyncMock";
+import CartWidget from "../CartWidget/cartWidget";
+import CarritoContext from "../../CartContext/CartContext";
+
 
 const NavBar = () => {
+
+  const { ContadorObjetos } = useContext(CarritoContext)
 
   const [categories, setcategories] = useState([])
 
@@ -51,11 +55,9 @@ const NavBar = () => {
                 <Link to='/' className="nav-link">Locales</Link>
               </li>
             </ul>
+            {ContadorObjetos(0) ? <CartWidget /> : null }    
           </div>
         </div>
-        
-        <CartWidget />
-        
       </nav>
     )
 }
