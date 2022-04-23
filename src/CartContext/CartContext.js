@@ -24,6 +24,16 @@ export const CarritoContextProvider = ({children}) => {
         return count
     }
 
+    const CalculoTotal = () => {
+        let total = 0
+
+        cart.forEach(prod => {
+            total += prod.Cantidad * prod.price
+        })
+
+        return total
+    }
+
     const isInCart = (id) => {
         return cart.some(prod => prod.id === id)
     }
@@ -39,7 +49,7 @@ export const CarritoContextProvider = ({children}) => {
 
     return(
         <div>
-            <CarritoContext.Provider value={{cart, AgregarProducto, ContadorObjetos, isInCart, clearCart, removeItem}}>
+            <CarritoContext.Provider value={{cart, AgregarProducto, ContadorObjetos, isInCart, clearCart, removeItem, CalculoTotal}}>
                 {children}
             </CarritoContext.Provider>
         </div>

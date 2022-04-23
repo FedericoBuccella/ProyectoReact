@@ -17,8 +17,6 @@ const ItemDetail = ({id, name, category, price, img, stock}) => {
 
         AgregarProducto({...CarritoObj, Cantidad: count})
     }
-
-
     
     return (
 
