@@ -8,8 +8,6 @@ import CarritoContext from "../../CartContext/CartContext";
 
 const NavBar = () => {
 
-  const { ContadorObjetos } = useContext(CarritoContext)
-
   const [categories, setcategories] = useState([])
 
   useEffect (()=>{
@@ -55,7 +53,7 @@ const NavBar = () => {
                 <Link to='/' className="nav-link">Locales</Link>
               </li>
             </ul>
-            {ContadorObjetos(0) ? <CartWidget /> : null }    
+            <CartWidget /> 
           </div>
         </div>
       </nav>
