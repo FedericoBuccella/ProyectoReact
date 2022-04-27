@@ -14,7 +14,7 @@ const Cart = () => {
                 <h1 className='m-5'>
                     Todavia no has agregado productos al carrito
                 </h1>
-                <Link className='btn btn-primary m-5' to={`/category/Productos`}>
+                <Link className='btn btn-primary m-5' to={'/productos'}>
                     Home
                 </Link>
             </div>
@@ -44,9 +44,11 @@ const Cart = () => {
                                 <td>${prod.price}</td>
                                 <td>{prod.Cantidad}</td>
                                 <td>${prod.Cantidad * prod.price}</td>
-                                <button className=" btn" onClick={() => removeItem(prod.id)}>
-                                    <img className='cesto' src='./images/cesto.png' alt='cesto'></img>
-                                </button>
+                                <td>
+                                    <button className=" btn" onClick={() => removeItem(prod.id)}>
+                                        <img className='cesto' src='./images/cesto.png' alt='cesto'></img>
+                                    </button>
+                                </td>
                             </tr>
                             )}
                 </tbody>

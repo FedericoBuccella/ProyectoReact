@@ -1,4 +1,3 @@
-import React from "react";
 import { createContext, useState } from "react";
 
 const CarritoContext = createContext()
@@ -16,7 +15,6 @@ export const CarritoContextProvider = ({children}) => {
 
     const ContadorObjetos = () => {
         let count = 0
-
         cart.forEach(prod => {
             count += prod.Cantidad
             console.log(count)
@@ -30,6 +28,7 @@ export const CarritoContextProvider = ({children}) => {
 
         cart.forEach(prod => {
             total += prod.Cantidad * prod.price
+            console.log(total)
         })
 
         return total

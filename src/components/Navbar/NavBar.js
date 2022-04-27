@@ -1,27 +1,34 @@
 import "./NavBar.css"
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { getCategories } from "../../AsyncMock";
 import CartWidget from "../CartWidget/cartWidget";
 import CarritoContext from "../../CartContext/CartContext";
+import { getDocs, collection } from "firebase/firestore";
+import { firestoreDb } from "../../service/firebase";
 
 
 const NavBar = () => {
 
+  const { cart } = useContext(CarritoContext)
+
   const [categories, setcategories] = useState([])
 
   useEffect (()=>{
-    
-    getCategories().then(categories => {  
+  
+    getDocs(collection(firestoreDb, 'categories')).then(response => {
 
-      setcategories(categories)
-    })
-  },[])
+      const categories = response.docs.map(doc => {  
+
+        return {id: doc.id, ...doc.data()}
+      }) 
+        setcategories(categories)
+    }, [categories])
+  })
 
     return(
       <nav className="navbar navbar-expand-lg navbar navbar-light bg-light">
         <div className="container-fluid">
-          <Link to={`/category/Productos`} className="navbar-brand titulo">TecnoCenter</Link>
+          <Link to={'/'} className="navbar-brand titulo">TecnoCenter</Link>
           <img className="logo" src='./images/tc.png' alt="logo"/>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -37,12 +44,12 @@ const NavBar = () => {
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li>
-                    <Link to={`/category/Productos`} className="dropdown-item" href="">
+                    <Link to={'/productos'} className="dropdown-item" href="">
                       <h6> TODOS LOS PRODUCTOS </h6>
                     </Link>
                   </li>
                   <li>
-                  { categories.map(cat => <Link key={cat.Id} to={`/category/${cat.Id}`} className="dropdown-item">{cat.Description}</Link> )}
+                  { categories.map(cat => <Link key={cat.id} to={`/category/${cat.id}`} className="dropdown-item">{cat.Description}</Link> )}
                   </li>
                 </ul>
               </li>
@@ -53,11 +60,12 @@ const NavBar = () => {
                 <Link to='/' className="nav-link">Locales</Link>
               </li>
             </ul>
-            <CartWidget /> 
+            {cart.length !== 0 ? <CartWidget /> : undefined }    
           </div>
         </div>
       </nav>
     )
 }
 
-export default NavBar;
+
+export default NavBar

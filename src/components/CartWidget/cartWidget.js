@@ -11,7 +11,7 @@ const CartWidget = () => {
         <div className="CartWidget">
             <Link to={`/cart`}>
 
-                <img src="./images/cart.png" alt='carrito' style={{width: 40, marginRight: 10}} />
+                <img src="../images/cart.png" alt='carrito' style={{width: 40, marginRight: 10}} />
 
             </Link>
             {ContadorObjetos()}
