@@ -14,6 +14,10 @@ export const CarritoContextProvider = ({children}) => {
     }
 
     const ContadorObjetos = () => {
+        return cart.reduce((acc, prod) => acc += prod.Cantidad, 0)
+    }
+
+    /* const ContadorObjetos = () => {
         let count = 0
         cart.forEach(prod => {
             count += prod.Cantidad
@@ -21,7 +25,7 @@ export const CarritoContextProvider = ({children}) => {
         })
 
         return count
-    }
+    } */
 
     const CalculoTotal = () => {
         let total = 0
