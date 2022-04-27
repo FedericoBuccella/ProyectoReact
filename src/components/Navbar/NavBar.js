@@ -22,7 +22,7 @@ const NavBar = () => {
         return {id: doc.id, ...doc.data()}
       }) 
         setcategories(categories)
-    }, [categories])
+    }, [])
   })
 
     return(
