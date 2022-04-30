@@ -1,13 +1,74 @@
 import './Cart.css'
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CarritoContext from "../../CartContext/CartContext";
 import { Link } from 'react-router-dom';
+import { firestoreDb } from '../../service/firebase/index';
+import { getDocs, writeBatch, query, where, collection, documentId, addDoc } from 'firebase/firestore';
 
 
 const Cart = () => {
 
-    const { cart, removeItem, CalculoTotal} = useContext(CarritoContext)
+    const [loading, setLoading] = useState(false)
 
+    const { cart, clearCart, removeItem, CalculoTotal} = useContext(CarritoContext)
+
+    const createOrder = () => {
+
+        setLoading(true)
+
+        const objOrder = {
+            items: cart,
+            buyer: {
+                name: "Federico Buccella",
+                phone: 123456,
+                email: "fedec.fb@gmail.com"
+            },
+            total: CalculoTotal(),
+            date: new Date()
+        }
+        
+        const ids = cart.map(prod => prod.id)
+
+        const batch = writeBatch(firestoreDb)
+        const collectionRef = collection(firestoreDb, 'Products')
+        const outOfStock = []
+
+        getDocs(query(collectionRef,where(documentId(), 'in', ids)))
+            .then(response => {
+                response.docs.forEach(doc => {
+                    
+                    const dataDoc = doc.data()
+                    const prodCantidad = cart.find(prod => prod.id === doc.id)?.Cantidad
+
+                    if(dataDoc.stock >= prodCantidad){
+                        batch.update(doc.ref, {stock: dataDoc.stock - prodCantidad})
+                    }else {
+                        outOfStock.push({id: doc.id, ...dataDoc})
+                    }
+                })
+            }).then(() => {
+                if(outOfStock.length === 0){
+                    const collectionRef = collection(firestoreDb, 'orders')
+                    return addDoc(collectionRef, objOrder)
+                } else {
+                    return Promise.reject({name: 'outOfStockError', products: outOfStock})
+                }
+            }).then(({id}) => {
+                batch.commit()
+                console.log(`El id de la orden es ${id}`)
+            }).catch(error => {
+                console.log(error)
+            }).finally(()=>{
+                setTimeout(() => {
+                    setLoading(false)  
+                }, 2000);
+                
+            })
+    }   
+        if(loading){
+            return <h1>Espere... Su orden esta siendo generada</h1>   
+        }
+    
     if(cart.length === 0){
         return(
             <div>
@@ -57,9 +118,14 @@ const Cart = () => {
                 <h6 className='total btn-danger'>
                         Total a abonar: ${CalculoTotal()}
                 </h6>   
-                <h6 /* onClick={} */ className='btn btn-success'>
+                <button /* onClick={} */ className='btn btn-success'>
                             Finalizar compra
-                </h6>
+                </button>
+                <button onClick={()=>{
+                    createOrder(); clearCart()
+                }} className='btn btn-success'>
+                            Generar una order
+                </button>
             </div>    
         </div>
     );

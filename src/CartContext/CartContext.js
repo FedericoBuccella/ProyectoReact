@@ -22,7 +22,6 @@ export const CarritoContextProvider = ({children}) => {
 
         cart.forEach(prod => {
             total += prod.Cantidad * prod.price
-            console.log(total)
         })
 
         return total
