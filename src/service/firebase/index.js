@@ -1,18 +1,16 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBUnN61WqyWTvQ1YFvxVhkj6k1Y0_txDb8",
-  authDomain: "tecno-app-b87ee.firebaseapp.com",
-  projectId: "tecno-app-b87ee",
-  storageBucket: "tecno-app-b87ee.appspot.com",
-  messagingSenderId: "851512977765",
-  appId: "1:851512977765:web:829ba36968c456c1a8d98c",
-  measurementId: "G-VJ0EPP87H2"
+  apiKey: "AIzaSyDdo7uTWMJW8tbn_1wRALuqpDKl3hlNRQU",
+  authDomain: "tecnocenter-9f5ff.firebaseapp.com",
+  projectId: "tecnocenter-9f5ff",
+  storageBucket: "tecnocenter-9f5ff.appspot.com",
+  messagingSenderId: "46797701504",
+  appId: "1:46797701504:web:e9bd036e0d6c52e218c165"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 export const firestoreDb = getFirestore(app)

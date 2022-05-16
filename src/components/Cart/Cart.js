@@ -118,9 +118,6 @@ const Cart = () => {
                 <h6 className='total btn-danger'>
                         Total a abonar: ${CalculoTotal()}
                 </h6>   
-                <button /* onClick={} */ className='btn btn-success'>
-                            Finalizar compra
-                </button>
                 <button onClick={()=>{
                     createOrder(); clearCart()
                 }} className='btn btn-success'>

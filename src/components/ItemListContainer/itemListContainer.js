@@ -29,8 +29,11 @@ const ItemListContainer = () => {
     }, [categoryid])
 
     return(
-        <div className="Todos"> 
-            <ItemList products={products} />
+        <div className="Todos">
+            <h3 className='text-decoration-underline text-center fs-2 my-3 '>Todos nuestros productos destacados los podras encontrar aqui:</h3>
+            <div>
+                <ItemList products={products} />
+            </div>
         </div>
     )
 }
