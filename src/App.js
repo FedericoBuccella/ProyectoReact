@@ -26,7 +26,7 @@ function App() {
             </Routes>
             <Footer />
           </BrowserRouter>
-        </CarritoContextProvider>s
+        </CarritoContextProvider>
       </header>
      
     </div>

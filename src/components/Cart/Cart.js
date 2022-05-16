@@ -6,7 +6,6 @@ import { firestoreDb } from '../../service/firebase/index';
 import { getDocs, writeBatch, query, where, collection, documentId, addDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 
-
 const Cart = () => {
 
     const [loading, setLoading] = useState(false)
@@ -64,6 +63,12 @@ const Cart = () => {
                     setLoading(false)  
                 }, 2000);
                 
+            })
+
+            Swal.fire({
+                title: 'Fantastico!',
+                text: 'El id de su orden es: ' + ids,
+                icon: 'success'
             })
     }   
         if(loading){
