@@ -30,9 +30,14 @@ const ItemDetail = ({id, name, category, price, img, stock}) => {
                     <div className='list-group'>
                         <p>Precio: ${price}</p>
                     </div>
-                    {isInCart(id) > 0 ? 
-                        <div> <Link className="btn btn-outline-primary" to='/cart'>
+                    {isInCart(id) > 0 
+                        ? 
+                        <div className="d-flex justify-content-center"> 
+                            <Link className="btn btn-outline-primary m-3" to='/cart'>
                                 Ir al carrito 
+                            </Link>
+                            <Link className='btn btn-outline-primary m-3' to={'/productos'}>
+                                Home
                             </Link>
                         </div> 
                         : 

@@ -26,6 +26,16 @@ const Cart = () => {
             total: CalculoTotal(),
             date: new Date()
         }
+
+        const ContadorOrden = () => {
+            let idNum = 0
+    
+            cart.forEach(() => {
+                idNum = idNum +1
+            })
+    
+            return idNum
+        }
         
         const ids = cart.map(prod => prod.id)
 
@@ -55,7 +65,7 @@ const Cart = () => {
                 }
             }).then(({id}) => {
                 batch.commit()
-                console.log(`El id de la orden es ${id}`)
+                console.log("El id de su orden es " + id)
             }).catch(error => {
                 console.log(error)
             }).finally(()=>{
@@ -65,11 +75,13 @@ const Cart = () => {
                 
             })
 
-            Swal.fire({
-                title: 'Fantastico!',
-                text: 'El id de su orden es: ' + ids,
-                icon: 'success'
-            })
+            setTimeout(() => {
+                Swal.fire({
+                    title: 'Gracias por su compra!',
+                    text: ' El id de su orden es: # ' + ContadorOrden() + ', Total a abonar: $' + CalculoTotal(),
+                    icon: 'success'
+                })
+            }, 3000);  
     }   
         if(loading){
             return <h1>Espere... Su orden esta siendo generada</h1>   
