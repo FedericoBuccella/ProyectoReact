@@ -24,11 +24,9 @@ function App() {
               <Route path='/detail/:productid' element={<ItemDetailContainer />} />
               <Route path='/cart' element={<Cart />} /> 
             </Routes>
+            <Footer />
           </BrowserRouter>
-        </CarritoContextProvider>
-        <footer>
-          <Footer />
-        </footer>
+        </CarritoContextProvider>s
       </header>
      
     </div>

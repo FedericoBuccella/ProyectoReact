@@ -4,6 +4,7 @@ import CarritoContext from "../../CartContext/CartContext";
 import { Link } from 'react-router-dom';
 import { firestoreDb } from '../../service/firebase/index';
 import { getDocs, writeBatch, query, where, collection, documentId, addDoc } from 'firebase/firestore';
+import Swal from 'sweetalert2';
 
 
 const Cart = () => {

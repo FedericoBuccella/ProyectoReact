@@ -18,7 +18,7 @@ const Principal = () => {
                             <img src="../images/Almacenamiento.png" className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block recuadro">
                                 <h5 className='mb-3'>Almacenamientos:</h5>
-                                <Link to={'/Almacenamiento'}>
+                                <Link to={'/category/Almacenamiento'}>
                                     <button className='btn btn-outline-light btn-floating m-1'>
                                         Ver productos
                                     </button>
@@ -29,7 +29,7 @@ const Principal = () => {
                             <img src="../images/Auris.jpg" className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block recuadro">
                                 <h5 className='mb-3'>Auriculares:</h5>
-                                <Link to={'/Auriculares'}>
+                                <Link to={'/category/Auriculares'}>
                                     <button className='btn btn-outline-light btn-floating m-1'>
                                         Ver productos
                                     </button>
@@ -40,7 +40,7 @@ const Principal = () => {
                             <img src="../images/Mouse.jpg" className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block recuadro">
                                 <h5 className='mb-3'>Mouse:</h5>
-                                <Link to={'/Mouse'}>
+                                <Link to={'/category/Mouse'}>
                                     <button className='btn btn-outline-light btn-floating m-1'>
                                         Ver productos
                                     </button>
@@ -51,7 +51,7 @@ const Principal = () => {
                             <img src="../images/Teclado1.webp" className="d-block w-100" alt="..." />
                             <div className="carousel-caption d-none d-md-block recuadro">
                                 <h5 className='mb-3'>Teclados:</h5>
-                                <Link to={'/Teclados'}>
+                                <Link to={'/category/Teclados'}>
                                     <button className='btn btn-outline-light btn-floating m-1'>
                                         Ver productos
                                     </button>
