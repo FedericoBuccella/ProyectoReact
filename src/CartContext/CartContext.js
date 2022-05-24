@@ -6,8 +6,6 @@ export const CarritoContextProvider = ({children}) => {
     
     const [cart, setcart] = useState([])
 
-    console.log(cart)
-
     const AgregarProducto = (addProduct) => {
 
         setcart([...cart, addProduct])

@@ -60,7 +60,7 @@ const NavBar = () => {
                 <Link to='/' className="nav-link">Locales</Link>
               </li>
             </ul>
-            {cart.length !== 0 ? <CartWidget /> : undefined }    
+           <CartWidget />   
           </div>
         </div>
       </nav>

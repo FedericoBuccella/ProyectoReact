@@ -1,91 +1,11 @@
 import './Cart.css'
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import CarritoContext from "../../CartContext/CartContext";
 import { Link } from 'react-router-dom';
-import { firestoreDb } from '../../service/firebase/index';
-import { getDocs, writeBatch, query, where, collection, documentId, addDoc } from 'firebase/firestore';
-import Swal from 'sweetalert2';
 
 const Cart = () => {
 
-    const [loading, setLoading] = useState(false)
-
-    const { cart, clearCart, removeItem, CalculoTotal} = useContext(CarritoContext)
-
-    const createOrder = () => {
-
-        setLoading(true)
-
-        const objOrder = {
-            items: cart,
-            buyer: {
-                name: "Federico Buccella",
-                phone: 123456,
-                email: "fedec.fb@gmail.com"
-            },
-            total: CalculoTotal(),
-            date: new Date()
-        }
-
-        const ContadorOrden = () => {
-            let idNum = 0
-    
-            cart.forEach(() => {
-                idNum = idNum +1
-            })
-    
-            return idNum
-        }
-        
-        const ids = cart.map(prod => prod.id)
-
-        const batch = writeBatch(firestoreDb)
-        const collectionRef = collection(firestoreDb, 'Products')
-        const outOfStock = []
-
-        getDocs(query(collectionRef,where(documentId(), 'in', ids)))
-            .then(response => {
-                response.docs.forEach(doc => {
-                    
-                    const dataDoc = doc.data()
-                    const prodCantidad = cart.find(prod => prod.id === doc.id)?.Cantidad
-
-                    if(dataDoc.stock >= prodCantidad){
-                        batch.update(doc.ref, {stock: dataDoc.stock - prodCantidad})
-                    }else {
-                        outOfStock.push({id: doc.id, ...dataDoc})
-                    }
-                })
-            }).then(() => {
-                if(outOfStock.length === 0){
-                    const collectionRef = collection(firestoreDb, 'orders')
-                    return addDoc(collectionRef, objOrder)
-                } else {
-                    return Promise.reject({name: 'outOfStockError', products: outOfStock})
-                }
-            }).then(({id}) => {
-                batch.commit()
-                console.log("El id de su orden es " + id)
-            }).catch(error => {
-                console.log(error)
-            }).finally(()=>{
-                setTimeout(() => {
-                    setLoading(false)  
-                }, 2000);
-                
-            })
-
-            setTimeout(() => {
-                Swal.fire({
-                    title: 'Gracias por su compra!',
-                    text: ' El id de su orden es: # ' + ContadorOrden() + ', Total a abonar: $' + CalculoTotal(),
-                    icon: 'success'
-                })
-            }, 3000);  
-    }   
-        if(loading){
-            return <h1>Espere... Su orden esta siendo generada</h1>   
-        }
+    const { cart, removeItem, CalculoTotal} = useContext(CarritoContext)
     
     if(cart.length === 0){
         return(
@@ -135,12 +55,11 @@ const Cart = () => {
             <div className='d-flex flex-flow justify-content-evenly align-items-center'>
                 <h6 className='total btn-danger'>
                         Total a abonar: ${CalculoTotal()}
-                </h6>   
-                <button onClick={()=>{
-                    createOrder(); clearCart()
-                }} className='btn btn-success'>
-                            Generar una order
-                </button>
+                </h6>
+                <Link to='/productos'>Seguir Comprando</Link>
+                <Link  to='/Formulario' className='btn btn-success'>
+                            Finalizar compra
+                </Link>
             </div>    
         </div>
     );

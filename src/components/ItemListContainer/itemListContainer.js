@@ -10,9 +10,12 @@ const ItemListContainer = () => {
 
     const [products,setProducts] = useState([])
 
+    const [loading, setloading] = useState(false)
+
     const {categoryid} = useParams()
 
     useEffect(() => {
+        setloading(true)
 
         const collectionref = categoryid
             ? query(collection(firestoreDb, 'Products'), where('category', '==', categoryid))
@@ -25,6 +28,10 @@ const ItemListContainer = () => {
                 }
             })
             setProducts(products)
+        }).catch(error => {
+            console.log(error)
+        }).finally(()=>{
+            setloading(false)
         })
     }, [categoryid])
 

@@ -20,6 +20,8 @@ const ItemDetailContainer = () => {
             console.log(response)
             const product = {id: response.id, ...response.data()}
             setItem(product)
+        }).catch(error => {
+            console.log(error)
         }).finally(()=>{
             setloading(false)
         })
