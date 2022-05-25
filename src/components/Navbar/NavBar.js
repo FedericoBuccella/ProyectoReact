@@ -1,15 +1,12 @@
 import "./NavBar.css"
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CartWidget from "../CartWidget/cartWidget";
-import CarritoContext from "../../CartContext/CartContext";
 import { getDocs, collection } from "firebase/firestore";
 import { firestoreDb } from "../../service/firebase";
 
 
 const NavBar = () => {
-
-  const { cart } = useContext(CarritoContext)
 
   const [categories, setcategories] = useState([])
 

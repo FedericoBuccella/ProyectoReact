@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import './ItemCount.css';
+import Swal from "sweetalert2";
 
 const ItemCount = ({onConfirm, initial, stock}) => {
 
     const [count, setCount] = useState(initial)
 
     useEffect(() => {
-        console.log('Se ejecuto el montaje del contador')
 
         let Activate = true;
 
@@ -18,15 +18,15 @@ const ItemCount = ({onConfirm, initial, stock}) => {
         })
     },[initial])
 
-    useEffect(()=>{
-        console.log('El contenido del contador cambio')
-    },[count])
-
     const increment = () => {
         if(count < stock){
             setCount (count + 1)
         }else {
-            console.log('La cantidad de stock requerido es insuficiente')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Este producto no tiene stock...'
+              })
         }
     }
 
@@ -34,7 +34,11 @@ const ItemCount = ({onConfirm, initial, stock}) => {
         if(count > 0){
             setCount (count - 1)
         }else{
-            console.log('Error')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'El numero que quiere seleccionar es incorrecto.'
+              })
         }
     }
 

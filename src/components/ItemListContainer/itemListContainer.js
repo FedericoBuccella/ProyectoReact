@@ -31,16 +31,28 @@ const ItemListContainer = () => {
         }).catch(error => {
             console.log(error)
         }).finally(()=>{
-            setloading(false)
+            setTimeout(() => {
+                setloading(false)
+            }, 2000);
         })
     }, [categoryid])
 
     return(
         <div className="Todos">
-            <h3 className='text-decoration-underline text-center fs-2 my-3 '>Todos nuestros productos destacados los podras encontrar aqui:</h3>
-            <div>
-                <ItemList products={products} />
-            </div>
+            {
+                loading  
+                ?
+                <div>
+                    <div className="spinner-border m-5 text-danger" style={{width: "3rem", height: "3rem"}} role="status">
+                        <span className="sr-only"></span>
+                    </div>
+                </div>
+            :
+                <div>
+                    <h3 className='text-decoration-underline text-center fs-2 my-3 '>Todos nuestros productos destacados los podras encontrar aqui:</h3>
+                    <ItemList products={products} />
+                </div>
+            }
         </div>
     )
 }

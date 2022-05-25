@@ -17,13 +17,15 @@ const ItemDetailContainer = () => {
         setloading(true)
 
         getDoc(doc(firestoreDb, 'Products', productid)).then(response => {
-            console.log(response)
+            
             const product = {id: response.id, ...response.data()}
             setItem(product)
         }).catch(error => {
             console.log(error)
         }).finally(()=>{
-            setloading(false)
+            setTimeout(() => {
+                setloading(false)
+            }, 2000);
         })
     },[productid])
 
@@ -32,9 +34,9 @@ const ItemDetailContainer = () => {
             {
             loading  
             ?
-                <h1>
-                    Cargando...
-                </h1>
+                <div className="spinner-border m-5 text-danger" style={{width: "3rem", height: "3rem"}} role="status">
+                    <span className="sr-only"></span>
+                </div>
             :
                 <ItemDetail {...Item} /> 
             }

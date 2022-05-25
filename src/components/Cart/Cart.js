@@ -56,7 +56,7 @@ const Cart = () => {
                 <h6 className='total btn-danger'>
                         Total a abonar: ${CalculoTotal()}
                 </h6>
-                <Link to='/productos'>Seguir Comprando</Link>
+                <Link to='/productos' className='btn btn-primary'>Seguir Comprando</Link>
                 <Link  to='/Formulario' className='btn btn-success'>
                             Finalizar compra
                 </Link>
