@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# TecnoCenter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## _Utilizacion de FireBase_
 
-## Available Scripts
+Como todo proyecto de E-commerce, debemos tener una base de datos en donde almacenar la informacion que debe aparecer en nuestra pagina. En este caso, dispondremos de productos que se alojan en FireBase.
 
-In the project directory, you can run:
+[![BaseDatos](https://upload.wikimedia.org/wikipedia/commons/b/bd/Firebase_Logo.png)](https://firebase.google.com)
 
-### `npm start`
+### _Configuración de FireBase:_
+Para poder acoplar nuestra base de datos con el proyecto, como primer medida tenemos que instalar en la terminal de VISUAL STUDIO CODE el FireBase. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```sh
+    npm install firebase
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Luego debemos utilizar un archivo de index.js donde se debera ubicar el SDK de los productos que quiero utilizar.
 
-### `npm test`
+### _Creación de Base de datos:_
+Una vez creada la base de datos, iniciaremos la carga de nuestro productos. Comenzando por una colección por cada conjunto:
+- Products
+.Id
+.Name
+.Img
+.Price
+.Stock
+- Description
+- Orders (Se crea automaticamente cada vez que un usuario realiza una compra)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Una vez creada la base de datos y utilizando las funciones adecuadas de firebase, podemos visualizar en nuestro sitio web los productos que cargamos en la BASE DE DATOS.
 
-### `npm run build`
+## _Inicialización del proyecto_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para poder inicializar nuestro proyecto, debemos ingresar a la terminal de VISUAL STUDIO CODE y ingresar:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+    npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Si no tenemos ningun error, tendremos nuestra app ecommerce funcionando correctamente.
 
-### `npm run eject`
+## _Descripción breve de algunos componentes_
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##### _NavBar:_
+Componente en el cual se aloja la barra de navegación y las secciones en donde se separan por categorias.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##### _Principal:_
+Componente que aloja solamente el carousel que esta compuesta con un indice con las categorias de los productos que se venden.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+##### _Formulario:_
+Este componente cumple la funcion de guardar el formulario de contacto que el usuario, que realiza la compra, debe completar con los datos.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##### _Cart:_
+Componente que visualiza el contenido del carrito que aloja los productos seleccionados para finalizar la compra.
 
-## Learn More
+##### _Item:_
+Este componente es la primera cara del producto antes de la instancia de los detalles. Se muestran los nombres y el boton de "Ver detalles"
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##### _ItemCount:_
+Componente que cumple la función de agregar los productos al carrito, ya sea incrementando el numero de productos o disminuyendolo.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### _ItemDetail:_
+Este componente es el que muestra los detalles del producto, con los nombres, las categorias y el precio correspondiente.
 
-### Code Splitting
+##### _ItemDetailContainer:_
+Componente en donde, con "getDoc" y "Collection", se obtiene de la base de datos los productos cargados.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+##### _ItemListContainer:_
+En este componente se muestra mediante "getDocs", "query" y "Collection" la obtencion de los datos. Con la utilización del filtros obtenemos, mediante categoryId, la categoria que se seleccione.
 
-### Analyzing the Bundle Size
+## _Funcionalidad del Ecommerce:_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![myfile](https://github.com/FedericoBuccella/ProyectoReact/blob/DesafioFinal/public/GIF/2022-05-25-17-16-42.gif?raw=true)
 
-### Making a Progressive Web App
+##### _Navegabilidad:_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+En esta pequeña introducción se explicara como realizar un compra. En la pagina principal visualizamos el carousel con el indice de los productos a la venta. 
 
-### Advanced Configuration
+1. En el navBar seleccionamos la categoria que deseamos comprar, por ejemplo: Auriculares.
+2. Una vez en la categoria de "Auriculares", elejimos el producto que deseemos comprar y presionamos "Ver detalles".
+3. En la sección de detalles nos encontraremos con el precio, los botones de incrementar y disminuir la cantidad de productos y "agregar al carrito".
+4. Si es el producto deseado presionamos en "agregar al carrito" y nos dirigimos al carrito de compras. Aqui debemos decidir si "Seguir comprando" o "Finalizar compra"
+5. Si seleccionamos "Finalizar compra", nos deriba a un formulario de contacto en donde debemos completarlo con los datos correspondientes.
+6. Si todos los datos ingresados son correctos, se habra realizado la compra con exito.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
