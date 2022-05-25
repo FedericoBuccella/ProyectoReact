@@ -47,7 +47,7 @@ export const Formulario = () => {
                     values.nombre !== ""){
                         Swal.fire({
                             title:'Gracias por su compra!',
-                            text:'Se enviará el pedido a ' + values.direccionEnvio + ' con una demora de 30 a 45 minutos. Porfavor guarde el ID de su envio: ' + res.id,
+                            text:'Se enviará el pedido a ' + values.direccionEnvio + ' con una demora de 3 a 5 dias. Porfavor guarde el ID de su envio: ' + res.id,
                             icon:'success',
                         })
                     if (res.id !== undefined){
