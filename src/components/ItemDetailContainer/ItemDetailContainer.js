@@ -19,7 +19,9 @@ const ItemDetailContainer = () => {
         getDoc(doc(firestoreDb, 'Products', productid)).then(response => {
             
             const product = {id: response.id, ...response.data()}
+
             setItem(product)
+            
         }).catch(error => {
             console.log(error)
         }).finally(()=>{
@@ -30,6 +32,7 @@ const ItemDetailContainer = () => {
     },[productid])
 
     return (
+
         <div>
             {
             loading  
@@ -41,6 +44,7 @@ const ItemDetailContainer = () => {
                 <ItemDetail {...Item} /> 
             }
         </div>
+
     );
 };
 

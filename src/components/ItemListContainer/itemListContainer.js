@@ -22,12 +22,17 @@ const ItemListContainer = () => {
             : query(collection(firestoreDb, 'Products'))
 
         getDocs( collectionref ).then( response => {
+
             const products = response.docs.map(doc => {
+
                 return{
                     id: doc.id, ...doc.data()
                 }
+
             })
+
             setProducts(products)
+            
         }).catch(error => {
             console.log(error)
         }).finally(()=>{
@@ -38,6 +43,7 @@ const ItemListContainer = () => {
     }, [categoryid])
 
     return(
+
         <div className="Todos">
             {
                 loading  
@@ -54,6 +60,7 @@ const ItemListContainer = () => {
                 </div>
             }
         </div>
+
     )
 }
 

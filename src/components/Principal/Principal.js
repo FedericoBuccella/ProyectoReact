@@ -3,7 +3,9 @@ import '../Principal/Principal.css'
 import { Link } from 'react-router-dom';
 
 const Principal = () => {
+
     return (
+        
         <div>
             <div className='d-flex flex-flow justify-content-center my-5'>
                 <div id="carouselExampleCaptions" className="carousel slide " data-bs-ride="false">

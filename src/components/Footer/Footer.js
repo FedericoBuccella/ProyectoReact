@@ -2,7 +2,9 @@ import React from 'react';
 import '../Footer/Footer.css'
 
 const Footer = () => {
+
     return (
+
         <div>
             <footer className="mt-5 bg-dark text-center text-white">
                 <div className="container p-4 pb-0">
@@ -26,6 +28,7 @@ const Footer = () => {
                 </div>
             </footer>
         </div>
+        
     );
 };
 

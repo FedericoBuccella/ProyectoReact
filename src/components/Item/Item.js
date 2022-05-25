@@ -2,7 +2,9 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Item = ({id, name, img}) => {
+
     return (
+
         <section className="m-2 Todos">
             <Card style={{ width: '18rem', padding:'10px' }}>
                 <Card.Img variant="top" src={img} />
@@ -14,6 +16,7 @@ const Item = ({id, name, img}) => {
                 </div>            
             </Card>
         </section>
+        
     );
 };
 
